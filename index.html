@@ -63,12 +63,13 @@
     text-decoration:none;color:var(--ink);
   }
   .logo-mark{
-    width:26px;height:26px;border-radius:7px;
+    width:32px;height:32px;border-radius:50%;
     background:var(--ink);position:relative;flex:none;
+    display:flex;align-items:center;justify-content:center;
   }
   .logo-mark::after{
-    content:"";position:absolute;inset:6px;background:#fff;
-    clip-path:polygon(0 100%, 0 60%, 35% 60%, 35% 30%, 70% 30%, 70% 0, 100% 0, 100% 100%);
+    content:"";position:absolute;width:18px;height:18px;background:#fff;
+    border-radius:3px;clip-path:polygon(0 100%, 0 55%, 35% 55%, 35% 25%, 70% 25%, 70% 0, 100% 0, 100% 100%);
   }
 
   /* CTA */
