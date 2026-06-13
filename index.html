@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FicheBoost · Audit de votre fiche Google Business · 19 €</title>
+<meta name="description" content="FicheBoost analyse votre fiche Google Business comme un consultant : note sur 100, points faibles précis, plan d'action. Rapport PDF en 10 minutes, 19 €, sans abonnement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-soft:#faf7f1;
+    --ink:#0a0a0b;
+    --ink-soft:#1d1d20;
+    --gray:#595e69;
+    --gray-light:#9aa0aa;
+    --line:#ece8dc;
+    --line-strong:#d9d4c4;
+    --yellow:#f5d637;
+    --yellow-soft:#fdf0a5;
+    --red:#dc2626;
+    --red-soft:#fde7e6;
+    --amber:#d97706;
+    --amber-soft:#fdf1d8;
+    --green:#16a34a;
+    --green-soft:#dcf2e3;
+    --container:1120px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);background:var(--bg);
+    line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  body.lock{overflow:hidden}
+  ::selection{background:var(--yellow);color:var(--ink)}
+  h1,h2,h3,h4{
+    font-family:'Inter Tight',sans-serif;
+    font-weight:800;line-height:1.04;letter-spacing:-0.035em;
+  }
+  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:0}
+  a{color:inherit}
+  .wrap{max-width:var(--container);margin:0 auto;padding:0 24px}
+
+  /* NAV */
+  nav.top{
+    position:sticky;top:0;z-index:40;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.top .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:16px;padding-bottom:16px;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Inter Tight',sans-serif;
+    font-weight:800;font-size:1.22rem;letter-spacing:-0.025em;
+    text-decoration:none;color:var(--ink);
+  }
+  .logo-mark{
+    width:26px;height:26px;border-radius:7px;
+    background:var(--ink);position:relative;flex:none;
+  }
+  .logo-mark::after{
+    content:"";position:absolute;inset:6px;background:#fff;
+    clip-path:polygon(0 100%, 0 60%, 35% 60%, 35% 30%, 70% 30%, 70% 0, 100% 0, 100% 100%);
+  }
+
+  /* CTA */
+  .cta{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--ink);color:#fff;text-decoration:none;
+    font-family:'Inter',sans-serif;font-weight:600;font-size:1rem;
+    padding:16px 26px;border-radius:12px;border:none;cursor:pointer;
+    transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .cta:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(10,10,11,.22)}
+  .cta .arr{transition:transform .15s ease}
+  .cta:hover .arr{transform:translateX(3px)}
+  .cta-s{padding:10px 18px;font-size:.92rem;border-radius:10px}
+  a:focus-visible,button:focus-visible,summary:focus-visible{
+    outline:2px solid var(--yellow);outline-offset:3px;border-radius:6px;
+  }
+
+  /* Yellow Pill */
+  .pill{
+    display:inline-block;background:var(--yellow);color:var(--ink);
+    font-family:'JetBrains Mono',monospace;font-size:.74rem;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;
+    padding:7px 13px;border-radius:7px;
+  }
+
+  /* HERO */
+  .hero{padding:110px 0 90px;text-align:center}
+  .hero h1{
+    font-size:clamp(2.7rem, 7.2vw, 5.6rem);
+    max-width:920px;margin:0 auto 30px;
+  }
+  .hero h1 .strike{
+    position:relative;white-space:nowrap;color:var(--gray-light);
+  }
+  .hero h1 .strike::after{
+    content:"";position:absolute;left:-4%;right:-4%;top:54%;
+    height:.065em;background:var(--gray);border-radius:99px;
+    transform:rotate(-2deg);opacity:.7;
+  }
+  .hero h1 .hl{
+    position:relative;display:inline-block;z-index:1;white-space:nowrap;
+  }
+  .hero h1 .hl::before{
+    content:"";position:absolute;left:-2%;right:-2%;bottom:.04em;
+    height:.32em;background:var(--yellow);z-index:-1;
+    border-radius:3px;
+  }
+  .hero .sub{
+    font-size:1.16rem;color:var(--gray);
+    max-width:600px;margin:0 auto 36px;
+  }
+  .hero .sub strong{color:var(--ink);font-weight:600}
+  .hero .meta{
+    margin-top:24px;font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;color:var(--gray-light);letter-spacing:.1em;text-transform:uppercase;
+  }
+  .hero .meta .sep{margin:0 10px;opacity:.5}
+
+  /* SECTION */
+  section{padding:100px 0}
+  section.bg-soft{background:var(--bg-soft)}
+  .sec-head{max-width:720px;margin:0 auto 60px;text-align:center}
+  .sec-head .pill{margin-bottom:22px}
+  .sec-head h2{font-size:clamp(2rem, 4.6vw, 3.1rem);margin-bottom:16px}
+  .sec-head p{color:var(--gray);font-size:1.05rem}
+
+  /* SLIDER */
+  .slider-wrap{position:relative}
+  .slider-track{
+    display:flex;gap:20px;overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    padding:4px 24px 28px;margin:0 -24px;
+    scrollbar-width:none;
+  }
+  .slider-track::-webkit-scrollbar{display:none}
+
+  .report-card{
+    flex:0 0 380px;scroll-snap-align:start;
+    background:#fff;border:1px solid var(--line-strong);border-radius:14px;
+    box-shadow:0 14px 36px rgba(10,10,11,.07);
+    padding:24px;text-align:left;cursor:pointer;
+    display:flex;flex-direction:column;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .report-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 22px 48px rgba(10,10,11,.12);
+    border-color:var(--ink);
+  }
+  @media (max-width:600px){.report-card{flex:0 0 84vw}}
+
+  .report-head{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    gap:12px;border-bottom:1px dashed var(--line-strong);
+    padding-bottom:16px;margin-bottom:18px;
+  }
+  .report-head .tag{
+    font-family:'JetBrains Mono',monospace;font-size:.66rem;
+    letter-spacing:.08em;color:var(--gray-light);text-transform:uppercase;
+  }
+  .report-head .biz{
+    font-family:'Inter Tight',sans-serif;font-weight:800;
+    font-size:1.1rem;margin-top:5px;line-height:1.2;letter-spacing:-0.025em;
+  }
+  .report-head .cat{font-size:.82rem;color:var(--gray);margin-top:3px}
+
+  .report-body{display:flex;gap:18px;align-items:center;margin-bottom:16px}
+  .gauge{position:relative;width:110px;height:110px;flex:none}
+  .gauge svg{transform:rotate(-90deg)}
+  .gauge .track{fill:none;stroke:#efebdc;stroke-width:9}
+  .gauge .bar{fill:none;stroke-width:9;stroke-linecap:round}
+  .gauge.red .bar{stroke:var(--red)}
+  .gauge.amber .bar{stroke:var(--amber)}
+  .gauge.green .bar{stroke:var(--green)}
+  .gauge .val{
+    position:absolute;inset:0;display:flex;
+    flex-direction:column;align-items:center;justify-content:center;
+  }
+  .gauge .val b{
+    font-family:'Inter Tight',sans-serif;font-size:1.95rem;
+    font-weight:800;line-height:1;letter-spacing:-0.04em;
+  }
+  .gauge .val small{
+    font-family:'JetBrains Mono',monospace;font-size:.62rem;
+    color:var(--gray-light);margin-top:4px;letter-spacing:.04em;
+  }
+
+  .flags{display:flex;flex-direction:column;gap:7px;flex:1;min-width:0}
+  .flag{
+    display:flex;align-items:center;gap:9px;font-size:.82rem;
+    padding:8px 11px;border-radius:8px;line-height:1.35;
+  }
+  .flag .dt{width:7px;height:7px;border-radius:50%;flex:none}
+  .flag.bad{background:var(--red-soft);color:#851f1f}.flag.bad .dt{background:var(--red)}
+  .flag.warn{background:var(--amber-soft);color:#7a4a02}.flag.warn .dt{background:var(--amber)}
+  .flag.good{background:var(--green-soft);color:#0f5128}.flag.good .dt{background:var(--green)}
+
+  .report-foot{
+    border-top:1px dashed var(--line-strong);padding-top:14px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:.78rem;color:var(--ink);margin-top:auto;font-weight:500;
+  }
+  .report-foot .mono{font-size:.7rem;color:var(--gray-light);font-weight:400}
+  .report-foot .arr{transition:transform .15s ease;display:inline-block}
+  .report-card:hover .report-foot .arr{transform:translateX(3px)}
+
+  .pager{
+    display:flex;justify-content:center;gap:8px;margin-top:6px;
+  }
+  .pager button{
+    width:8px;height:8px;border-radius:50%;border:none;
+    background:var(--line-strong);cursor:pointer;padding:0;
+    transition:background .15s, transform .15s, width .15s;
+  }
+  .pager button:hover{transform:scale(1.3)}
+  .pager button.active{background:var(--ink);width:24px;border-radius:99px}
+
+  /* MODAL */
+  .modal{
+    position:fixed;inset:0;z-index:100;display:none;
+    align-items:center;justify-content:center;
+    padding:24px;
+  }
+  .modal.open{display:flex;animation:fadeIn .2s ease}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .modal-bd{
+    position:absolute;inset:0;background:rgba(10,10,11,.55);
+    backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  }
+  .modal-panel{
+    position:relative;background:#fff;border-radius:18px;
+    max-width:680px;width:100%;max-height:90vh;overflow-y:auto;
+    box-shadow:0 30px 80px rgba(0,0,0,.3);
+    animation:rise .25s cubic-bezier(.22,1,.36,1);
+  }
+  @keyframes rise{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+  .modal-close{
+    position:absolute;top:18px;right:18px;width:36px;height:36px;
+    border:none;background:var(--bg-soft);border-radius:50%;
+    font-size:1.4rem;cursor:pointer;color:var(--ink);
+    display:flex;align-items:center;justify-content:center;line-height:1;
+    transition:background .15s;z-index:2;
+  }
+  .modal-close:hover{background:var(--line-strong)}
+  .modal-head{
+    padding:32px 32px 24px;border-bottom:1px dashed var(--line-strong);
+    display:flex;gap:24px;align-items:center;
+  }
+  .modal-head .info{flex:1;min-width:0}
+  .modal-head .tag{
+    font-family:'JetBrains Mono',monospace;font-size:.7rem;
+    letter-spacing:.08em;color:var(--gray-light);text-transform:uppercase;
+    display:block;margin-bottom:6px;
+  }
+  .modal-head h3{font-size:1.55rem;line-height:1.15;margin-bottom:4px}
+  .modal-head .cat{font-size:.92rem;color:var(--gray)}
+  .modal-head .gauge{width:96px;height:96px}
+  .modal-head .gauge .val b{font-size:1.65rem}
+  .modal-body{padding:24px 32px 28px}
+  .m-section{margin-bottom:22px}
+  .m-section:last-child{margin-bottom:0}
+  .m-section h4{
+    font-size:.78rem;font-family:'JetBrains Mono',monospace;
+    font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--gray);margin-bottom:10px;font-style:normal;
+  }
+  .m-section .flag{font-size:.88rem;padding:9px 12px;margin-bottom:6px}
+  .m-section .flag:last-child{margin-bottom:0}
+  .modal-foot{
+    background:var(--bg-soft);padding:22px 32px;
+    border-bottom-left-radius:18px;border-bottom-right-radius:18px;
+    border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  }
+  .modal-foot p{font-size:.84rem;color:var(--gray);max-width:280px}
+  .modal-foot .cta{padding:13px 22px;font-size:.95rem}
+
+  @media (max-width:600px){
+    .modal{padding:0;align-items:flex-end}
+    .modal-panel{border-radius:18px 18px 0 0;max-height:92vh}
+    .modal-head{padding:28px 24px 20px;flex-direction:column;align-items:flex-start;gap:20px}
+    .modal-body{padding:20px 24px 24px}
+    .modal-foot{padding:18px 24px;border-radius:0}
+  }
+
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .step{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:32px 28px;position:relative;
+  }
+  .step .top{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-bottom:22px;
+  }
+  .step .n{
+    font-family:'Inter Tight',sans-serif;font-size:2.2rem;font-weight:800;
+    letter-spacing:-0.04em;color:var(--ink);line-height:1;
+  }
+  .step .tag{
+    background:var(--yellow);color:var(--ink);
+    font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:600;
+    padding:5px 10px;border-radius:6px;letter-spacing:.04em;
+  }
+  .step h3{font-size:1.22rem;font-weight:800;margin-bottom:10px;letter-spacing:-0.025em}
+  .step p{font-size:.94rem;color:var(--gray)}
+
+  /* GRID */
+  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .item{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:26px;display:flex;gap:18px;align-items:flex-start;
+    transition:border-color .15s,transform .15s;
+  }
+  .item:hover{border-color:var(--ink);transform:translateY(-2px)}
+  .item .ic{
+    width:40px;height:40px;border-radius:9px;
+    background:var(--ink);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:500;
+    flex:none;
+  }
+  .item h3{font-size:1.1rem;font-weight:800;margin-bottom:6px;letter-spacing:-0.02em}
+  .item p{font-size:.92rem;color:var(--gray)}
+
+  /* PRICING */
+  .pricing-card{
+    background:#fff;border:1px solid var(--line-strong);border-radius:20px;
+    padding:48px;max-width:980px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 1fr;gap:48px;
+    align-items:center;box-shadow:0 24px 60px rgba(10,10,11,.06);
+  }
+  .pricing-left .pill{margin-bottom:18px}
+  .pricing-left h3{font-size:2rem;font-weight:800;margin-bottom:14px;letter-spacing:-0.035em}
+  .pricing-left .sub{font-size:.98rem;color:var(--gray);margin-bottom:28px;max-width:340px}
+  .pricing-left .price{
+    font-family:'Inter Tight',sans-serif;
+    font-size:5rem;font-weight:800;line-height:.95;
+    letter-spacing:-0.055em;margin-bottom:8px;
+  }
+  .pricing-left .price small{
+    font-size:1.2rem;color:var(--gray);font-weight:600;letter-spacing:0;
+    margin-left:6px;
+  }
+  .pricing-left .once{
+    font-family:'JetBrains Mono',monospace;font-size:.7rem;
+    color:var(--gray);letter-spacing:.1em;text-transform:uppercase;
+  }
+  .pricing-right{display:flex;flex-direction:column;gap:0}
+  .inclus{list-style:none;margin-bottom:24px}
+  .inclus li{
+    padding:13px 0;border-top:1px solid var(--line);
+    font-size:.95rem;display:flex;gap:12px;align-items:center;
+    color:var(--ink-soft);
+  }
+  .inclus li:last-child{border-bottom:1px solid var(--line)}
+  .inclus .ck{
+    color:var(--green);font-weight:700;flex:none;
+    font-family:'JetBrains Mono',monospace;font-size:1rem;
+  }
+  .pricing-right .cta{width:100%;justify-content:center;padding:18px 26px}
+  .pricing-right .trust{
+    margin-top:14px;font-size:.72rem;color:var(--gray-light);
+    text-align:center;font-family:'JetBrains Mono',monospace;
+    letter-spacing:.1em;text-transform:uppercase;
+  }
+
+  @media (max-width:760px){
+    .pricing-card{grid-template-columns:1fr;padding:32px 24px;gap:32px}
+  }
+
+  /* FAQ */
+  .faq{max-width:720px;margin:0 auto}
+  details{border-bottom:1px solid var(--line-strong)}
+  details:first-child{border-top:1px solid var(--line-strong)}
+  summary{
+    cursor:pointer;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;gap:18px;
+    padding:24px 4px;font-family:'Inter Tight',sans-serif;
+    font-weight:800;font-size:1.1rem;letter-spacing:-0.02em;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary .pm{
+    font-family:'JetBrains Mono',monospace;color:var(--gray-light);
+    transition:transform .2s;flex:none;font-size:1.4rem;font-weight:500;
+  }
+  details[open] summary .pm{transform:rotate(45deg)}
+  details .a{
+    padding:0 4px 24px;color:var(--gray);font-size:.95rem;
+    max-width:640px;line-height:1.7;
+  }
+
+  /* FINAL */
+  .final{text-align:center;padding:120px 0}
+  .final h2{
+    font-size:clamp(2.1rem, 5vw, 3.4rem);
+    max-width:760px;margin:0 auto 22px;
+  }
+  .final h2 .hl{
+    position:relative;display:inline-block;z-index:1;
+  }
+  .final h2 .hl::before{
+    content:"";position:absolute;left:-2%;right:-2%;bottom:.04em;
+    height:.32em;background:var(--yellow);z-index:-1;border-radius:3px;
+  }
+  .final p{
+    color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
+  }
+
+  /* FOOTER */
+  footer{
+    border-top:1px solid var(--line-strong);
+    padding:56px 0 40px;background:var(--bg-soft);
+    font-size:.86rem;color:var(--gray);
+  }
+  .foot-top{
+    display:flex;justify-content:space-between;align-items:center;
+    gap:18px;flex-wrap:wrap;margin-bottom:36px;
+  }
+  .foot-links{display:flex;gap:26px;flex-wrap:wrap}
+  .foot-links a{text-decoration:none;color:var(--gray)}
+  .foot-links a:hover{color:var(--ink)}
+  .legal{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:6px 24px;
+  }
+  .legal details{border:none}
+  .legal details:first-child{border:none}
+  .legal details + details{border-top:1px solid var(--line)}
+  .legal summary{font-size:.96rem;padding:16px 0;font-weight:700}
+  .legal .a{font-size:.84rem;line-height:1.7}
+  .legal .a p{margin-bottom:10px}
+  .copy{
+    margin-top:30px;color:var(--gray-light);font-size:.78rem;
+    text-align:center;
+  }
+  .copy .small{font-size:.65rem;letter-spacing:.08em;opacity:.7;margin-left:4px;font-family:'JetBrains Mono',monospace}
+
+  @media (max-width:760px){
+    section{padding:72px 0}
+    .steps,.grid-2{grid-template-columns:1fr}
+    .hero{padding:70px 0 60px}
+    .final{padding:80px 0}
+    .foot-top{flex-direction:column;align-items:flex-start}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="logo" href="#"><span class="logo-mark" aria-hidden="true"></span>FicheBoost</a>
+    <a class="cta cta-s" href="#tarif">Auditer ma fiche <span class="arr">→</span></a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Votre fiche Google travaille <span class="strike">pour</span> <span class="hl">contre&nbsp;vous.</span></h1>
+    <p class="sub">La fiche Google est la première chose que vos clients voient, avant votre vitrine, avant votre site. <strong>FicheBoost analyse la vôtre comme le ferait un consultant</strong> : note sur 100, points faibles précis, plan d'action concret. Rapport PDF livré en 10 minutes.</p>
+    <a class="cta" href="#tarif">Obtenir mon audit · 19&nbsp;€ <span class="arr">→</span></a>
+    <p class="meta">Sans abonnement <span class="sep">·</span> Livraison en 10 min <span class="sep">·</span> Paiement sécurisé Stripe</p>
+  </div>
+</header>
+
+<section class="bg-soft" id="exemples">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill">Exemples de rapports</span>
+      <h2>Voici ce que vous recevez.</h2>
+      <p>Quatre extraits de rapports, anonymisés. Cliquez sur une fiche pour voir l'analyse complète.</p>
+    </div>
+    <div class="slider-wrap">
+      <div class="slider-track" id="slider">
+
+        <div class="report-card" data-audit="0147" role="button" tabindex="0" aria-label="Voir l'audit complet : Boulangerie du Port">
+          <div class="report-head">
+            <div>
+              <div class="tag">FICHEBOOST · AUDIT №0147</div>
+              <div class="biz">Boulangerie du Port</div>
+              <div class="cat">Boulangerie, Bayonne</div>
+            </div>
+          </div>
+          <div class="report-body">
+            <div class="gauge amber">
+              <svg width="110" height="110" viewBox="0 0 110 110" aria-hidden="true">
+                <circle class="track" cx="55" cy="55" r="45"></circle>
+                <circle class="bar" cx="55" cy="55" r="45" stroke-dasharray="283" stroke-dashoffset="119"></circle>
+              </svg>
+              <div class="val"><b>58</b><small>/ 100</small></div>
+            </div>
+            <div class="flags">
+              <div class="flag bad"><span class="dt"></span>14 avis sans réponse depuis +60 jours</div>
+              <div class="flag warn"><span class="dt"></span>Aucune photo depuis 11 mois</div>
+              <div class="flag good"><span class="dt"></span>Horaires complets et à jour</div>
+            </div>
+          </div>
+          <div class="report-foot">
+            <span>Voir l'analyse complète</span>
+            <span class="arr">→</span>
+          </div>
+        </div>
+
+        <div class="report-card" data-audit="0148" role="button" tabindex="0" aria-label="Voir l'audit complet : Garage Auto Pyrénées">
+          <div class="report-head">
+            <div>
+              <div class="tag">FICHEBOOST · AUDIT №0148</div>
+              <div class="biz">Garage Auto Pyrénées</div>
+              <div class="cat">Réparation automobile, Pau</div>
+            </div>
+          </div>
+          <div class="report-body">
+            <div class="gauge red">
+              <svg width="110" height="110" viewBox="0 0 110 110" aria-hidden="true">
+                <circle class="track" cx="55" cy="55" r="45"></circle>
+                <circle class="bar" cx="55" cy="55" r="45" stroke-dasharray="283" stroke-dashoffset="187"></circle>
+              </svg>
+              <div class="val"><b>34</b><small>/ 100</small></div>
+            </div>
+            <div class="flags">
+              <div class="flag bad"><span class="dt"></span>Note 3.2 / 5 sur 47 avis</div>
+              <div class="flag bad"><span class="dt"></span>Description vide, une seule catégorie</div>
+              <div class="flag warn"><span class="dt"></span>Aucun service détaillé</div>
+            </div>
+          </div>
+          <div class="report-foot">
+            <span>Voir l'analyse complète</span>
+            <span class="arr">→</span>
+          </div>
+        </div>
+
+        <div class="report-card" data-audit="0149" role="button" tabindex="0" aria-label="Voir l'audit complet : Salon Élise Coiffure">
+          <div class="report-head">
+            <div>
+              <div class="tag">FICHEBOOST · AUDIT №0149</div>
+              <div class="biz">Salon Élise Coiffure</div>
+              <div class="cat">Salon de coiffure, Anglet</div>
+            </div>
+          </div>
+          <div class="report-body">
+            <div class="gauge green">
+              <svg width="110" height="110" viewBox="0 0 110 110" aria-hidden="true">
+                <circle class="track" cx="55" cy="55" r="45"></circle>
+                <circle class="bar" cx="55" cy="55" r="45" stroke-dasharray="283" stroke-dashoffset="54"></circle>
+              </svg>
+              <div class="val"><b>81</b><small>/ 100</small></div>
+            </div>
+            <div class="flags">
+              <div class="flag good"><span class="dt"></span>89 % des avis avec réponse</div>
+              <div class="flag good"><span class="dt"></span>34 photos récentes ajoutées</div>
+              <div class="flag warn"><span class="dt"></span>Horaires fériés à compléter</div>
+            </div>
+          </div>
+          <div class="report-foot">
+            <span>Voir l'analyse complète</span>
+            <span class="arr">→</span>
+          </div>
+        </div>
+
+        <div class="report-card" data-audit="0150" role="button" tabindex="0" aria-label="Voir l'audit complet : Pizzeria Da Mario">
+          <div class="report-head">
+            <div>
+              <div class="tag">FICHEBOOST · AUDIT №0150</div>
+              <div class="biz">Pizzeria Da Mario</div>
+              <div class="cat">Restaurant italien, Biarritz</div>
+            </div>
+          </div>
+          <div class="report-body">
+            <div class="gauge amber">
+              <svg width="110" height="110" viewBox="0 0 110 110" aria-hidden="true">
+                <circle class="track" cx="55" cy="55" r="45"></circle>
+                <circle class="bar" cx="55" cy="55" r="45" stroke-dasharray="283" stroke-dashoffset="150"></circle>
+              </svg>
+              <div class="val"><b>47</b><small>/ 100</small></div>
+            </div>
+            <div class="flags">
+              <div class="flag bad"><span class="dt"></span>3 derniers avis négatifs sans réponse</div>
+              <div class="flag warn"><span class="dt"></span>Menu non renseigné sur la fiche</div>
+              <div class="flag good"><span class="dt"></span>Coordonnées et horaires complets</div>
+            </div>
+          </div>
+          <div class="report-foot">
+            <span>Voir l'analyse complète</span>
+            <span class="arr">→</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="pager" id="pager" role="tablist" aria-label="Pagination des exemples"></div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill">Comment ça marche</span>
+      <h2>Trois étapes. Zéro rendez-vous.</h2>
+      <p>Pas de devis, pas d'appel commercial, pas d'agence. Vous commandez, l'analyse tourne, vous recevez le rapport.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="top">
+          <span class="n">01</span>
+          <span class="tag">1 min</span>
+        </div>
+        <h3>Indiquez votre fiche</h3>
+        <p>Le nom de votre établissement ou le lien de votre fiche Google, et l'email où recevoir le rapport. C'est tout.</p>
+      </div>
+      <div class="step">
+        <div class="top">
+          <span class="n">02</span>
+          <span class="tag">auto</span>
+        </div>
+        <h3>Analyse de 40+ critères</h3>
+        <p>Avis et réponses, photos, horaires, description, catégories, complétude, comparaison avec les fiches concurrentes proches.</p>
+      </div>
+      <div class="step">
+        <div class="top">
+          <span class="n">03</span>
+          <span class="tag">~10 min</span>
+        </div>
+        <h3>Recevez votre plan d'action</h3>
+        <p>Un PDF clair : votre note, ce qui vous coûte des clients, et les 3 actions prioritaires à appliquer cette semaine.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-soft" id="rapport">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill">Le contenu du rapport</span>
+      <h2>Ce que vous recevez, concrètement.</h2>
+      <p>Un audit de 6 pages, écrit en français clair. Pas de jargon marketing, pas de blabla pour remplir.</p>
+    </div>
+    <div class="grid-2">
+      <div class="item">
+        <span class="ic" aria-hidden="true">/100</span>
+        <div><h3>Note globale</h3><p>Un score sur 100 basé sur 40+ critères, pour savoir où vous en êtes et mesurer vos progrès au fil du temps.</p></div>
+      </div>
+      <div class="item">
+        <span class="ic" aria-hidden="true">★</span>
+        <div><h3>Analyse de vos avis</h3><p>Avis sans réponse, ton de vos réponses, points qui reviennent chez vos clients en bien comme en mal.</p></div>
+      </div>
+      <div class="item">
+        <span class="ic" aria-hidden="true">▣</span>
+        <div><h3>Photos et visuels</h3><p>Fraîcheur, quantité, qualité perçue. Les photos sont l'un des premiers déclencheurs de visite en local.</p></div>
+      </div>
+      <div class="item">
+        <span class="ic" aria-hidden="true">VS</span>
+        <div><h3>Comparaison locale</h3><p>Votre fiche face aux établissements similaires autour de vous. Où ils font mieux, où vous pouvez les dépasser.</p></div>
+      </div>
+      <div class="item">
+        <span class="ic" aria-hidden="true">i</span>
+        <div><h3>Complétude</h3><p>Horaires, catégories, attributs, description. Chaque champ vide ou obsolète est signalé.</p></div>
+      </div>
+      <div class="item">
+        <span class="ic" aria-hidden="true">→</span>
+        <div><h3>Plan d'action priorisé</h3><p>Les 3 actions à plus fort impact, expliquées pas à pas. Faisables vous-même, sans agence et sans budget.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tarif">
+  <div class="wrap">
+    <div class="pricing-card">
+      <div class="pricing-left">
+        <span class="pill">Tarif</span>
+        <h3>Un prix. Pas d'abonnement.</h3>
+        <p class="sub">Vous commandez, vous recevez, c'est fini. Aucun engagement, aucun rappel commercial.</p>
+        <div class="price">19<small>&nbsp;€ TTC</small></div>
+        <p class="once">Paiement unique · Livraison en 10 min</p>
+      </div>
+      <div class="pricing-right">
+        <ul class="inclus">
+          <li><span class="ck">✓</span>Audit complet de votre fiche (40+ critères)</li>
+          <li><span class="ck">✓</span>Rapport PDF de 6 pages, en français clair</li>
+          <li><span class="ck">✓</span>Comparaison avec vos concurrents proches</li>
+          <li><span class="ck">✓</span>Plan d'action : 3 priorités, pas à pas</li>
+          <li><span class="ck">✓</span>Livré par email sous 10 minutes</li>
+        </ul>
+        <a class="cta" href="https://buy.stripe.com/5kQ6oH0zE31Ugw4dN1dfG05">Lancer mon audit <span class="arr">→</span></a>
+        <p class="trust">Paiement sécurisé par Stripe</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-soft" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill">FAQ</span>
+      <h2>Questions fréquentes</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>En quoi c'est différent d'un audit gratuit d'agence ? <span class="pm">+</span></summary>
+        <div class="a">Les « audits gratuits » d'agences sont des outils commerciaux. Leur but est de vous vendre une prestation à plusieurs centaines d'euros par mois. FicheBoost vous vend le rapport, point. Pas de rappel téléphonique, pas de devis derrière, pas d'engagement. Vous appliquez le plan d'action vous-même.</div>
+      </details>
+      <details>
+        <summary>Combien de temps pour recevoir mon rapport ? <span class="pm">+</span></summary>
+        <div class="a">L'analyse est automatisée. Vous recevez votre rapport PDF par email environ 10 minutes après le paiement. Si rien n'arrive sous 30 minutes, vérifiez vos spams puis écrivez-nous, nous renvoyons le rapport ou vous remboursons.</div>
+      </details>
+      <details>
+        <summary>Ça marche pour quel type d'établissement ? <span class="pm">+</span></summary>
+        <div class="a">Tout établissement disposant d'une fiche Google Business : commerces, restaurants, artisans, salons, cabinets, garages. Si vos clients peuvent vous trouver sur Google Maps, l'audit s'applique.</div>
+      </details>
+      <details>
+        <summary>L'analyse est faite par une IA, c'est fiable ? <span class="pm">+</span></summary>
+        <div class="a">L'analyse combine des données factuelles de votre fiche (avis, photos, horaires, complétude, récupérées via l'API officielle Google) et une intelligence artificielle entraînée à les interpréter selon les bonnes pratiques du référencement local. Le rapport reste un avis indicatif : c'est un diagnostic et un plan d'action, pas une garantie de résultat.</div>
+      </details>
+      <details>
+        <summary>Avez-vous besoin d'accéder à mon compte Google ? <span class="pm">+</span></summary>
+        <div class="a">Non, jamais. L'audit se base uniquement sur les informations publiques de votre fiche, celles que vos clients voient. Aucun mot de passe, aucun accès, aucune autorisation à donner.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Vos prochains clients vous cherchent sur Google. <span class="hl">Là, maintenant.</span></h2>
+    <p>19 € pour savoir exactement ce que votre fiche vous coûte, et comment y remédier cette semaine.</p>
+    <a class="cta" href="#tarif">Auditer ma fiche <span class="arr">→</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="logo" href="#"><span class="logo-mark" aria-hidden="true"></span>FicheBoost</a>
+      <div class="foot-links">
+        <a href="mailto:contact@kaelix.store">Contact</a>
+        <a href="#faq">FAQ</a>
+        <a href="#tarif">Tarif</a>
+      </div>
+    </div>
+
+    <div class="legal">
+      <details>
+        <summary>Mentions légales <span class="pm">+</span></summary>
+        <div class="a">
+          <p><strong>Éditeur du site</strong> : FicheBoost est un service édité par [Prénom NOM], entrepreneur individuel (micro-entreprise), [adresse], [CP] Bayonne, France. SIRET : [n° SIRET]. Contact : contact@kaelix.store.</p>
+          <p><strong>Hébergement</strong> : Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis.</p>
+          <p><strong>Directeur de la publication</strong> : [Prénom NOM].</p>
+          <p><strong>Propriété intellectuelle</strong> : L'ensemble des contenus du site et des rapports générés est protégé. FicheBoost n'est pas affilié à Google LLC. « Google » et « Google Business Profile » sont des marques de Google LLC.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Conditions générales de vente <span class="pm">+</span></summary>
+        <div class="a">
+          <p><strong>Objet</strong> : FicheBoost fournit un rapport d'audit numérique (PDF) analysant la fiche Google Business indiquée par le client, au prix de 19 € TTC, paiement unique via Stripe.</p>
+          <p><strong>Livraison</strong> : Le rapport est livré par email à l'adresse indiquée, généralement sous 10 minutes et au plus tard sous 24 heures.</p>
+          <p><strong>Droit de rétractation</strong> : Conformément à l'article L221-28 du Code de la consommation, le droit de rétractation ne s'applique pas aux contenus numériques fournis immédiatement après accord exprès du client. En passant commande, vous acceptez l'exécution immédiate et renoncez à votre droit de rétractation.</p>
+          <p><strong>Garantie commerciale</strong> : indépendamment de ce qui précède, FicheBoost offre un remboursement intégral sur simple demande sous 7 jours si le rapport ne vous satisfait pas.</p>
+          <p><strong>Nature du service</strong> : Le rapport constitue un avis indicatif fondé sur les données publiques de la fiche et ne garantit aucun résultat commercial. Médiation de la consommation : [organisme à compléter].</p>
+        </div>
+      </details>
+      <details>
+        <summary>Confidentialité et données personnelles <span class="pm">+</span></summary>
+        <div class="a">
+          <p><strong>Données collectées</strong> : adresse email (livraison du rapport), nom ou lien de l'établissement audité, données de paiement traitées exclusivement par Stripe (FicheBoost ne stocke aucune donnée bancaire).</p>
+          <p><strong>Finalité</strong> : exécution de la commande et envoi du rapport. Aucune revente de données, aucune inscription à une newsletter sans consentement.</p>
+          <p><strong>Sous-traitants</strong> : Stripe (paiement), Anthropic (analyse IA), Google (données publiques via API officielle), hébergement Vercel. Certains traitements peuvent impliquer des transferts hors UE, encadrés par des clauses contractuelles types.</p>
+          <p><strong>Vos droits</strong> : vous disposez d'un droit d'accès, de rectification et de suppression : contact@kaelix.store.</p>
+        </div>
+      </details>
+    </div>
+
+    <p class="copy">© 2026 FicheBoost · Propulsé par Kaelix Voice · Fait en France <span class="small">FR</span></p>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-bd" data-close></div>
+  <div class="modal-panel">
+    <button class="modal-close" data-close aria-label="Fermer">×</button>
+    <div class="modal-head">
+      <div class="info">
+        <span class="tag" id="mTag"></span>
+        <h3 id="modalTitle"></h3>
+        <p class="cat" id="mCat"></p>
+      </div>
+      <div class="gauge" id="mGauge">
+        <svg width="96" height="96" viewBox="0 0 110 110" aria-hidden="true">
+          <circle class="track" cx="55" cy="55" r="45"></circle>
+          <circle class="bar" cx="55" cy="55" r="45" stroke-dasharray="283" stroke-dashoffset="283"></circle>
+        </svg>
+        <div class="val"><b id="mScore">0</b><small>/ 100</small></div>
+      </div>
+    </div>
+    <div class="modal-body" id="mBody"></div>
+    <div class="modal-foot">
+      <p>Vous voulez un rapport personnalisé sur votre fiche ?</p>
+      <a class="cta" href="#tarif" data-close>Lancer mon audit <span class="arr">→</span></a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Audit data
+  const audits = {
+    '0147': {
+      tag: 'FICHEBOOST · AUDIT №0147',
+      biz: 'Boulangerie du Port',
+      cat: 'Boulangerie, Bayonne',
+      score: 58, tone: 'amber',
+      sections: [
+        { title: 'Avis et réputation', flags: [
+          { t: 'bad',  x: '14 avis sans réponse depuis plus de 60 jours' },
+          { t: 'warn', x: 'Note moyenne 4.1 / 5 sur 67 avis' },
+          { t: 'good', x: 'Pas d\'avis négatif récent' }
+        ]},
+        { title: 'Photos et visuels', flags: [
+          { t: 'warn', x: 'Aucune photo ajoutée depuis 11 mois' },
+          { t: 'warn', x: '8 photos seulement (moyenne du secteur : 24)' }
+        ]},
+        { title: 'Informations de base', flags: [
+          { t: 'good', x: 'Horaires complets et à jour' },
+          { t: 'good', x: 'Téléphone et site web renseignés' }
+        ]},
+        { title: 'Présence locale', flags: [
+          { t: 'warn', x: 'Description courte (87 caractères sur 750 possibles)' },
+          { t: 'bad',  x: 'Aucun attribut détaillé (terrasse, sans contact, etc.)' }
+        ]},
+        { title: 'Engagement', flags: [
+          { t: 'bad',  x: 'Aucun post Google Business depuis 8 mois' },
+          { t: 'warn', x: 'Questions / réponses non configurées' }
+        ]}
+      ]
+    },
+    '0148': {
+      tag: 'FICHEBOOST · AUDIT №0148',
+      biz: 'Garage Auto Pyrénées',
+      cat: 'Réparation automobile, Pau',
+      score: 34, tone: 'red',
+      sections: [
+        { title: 'Avis et réputation', flags: [
+          { t: 'bad', x: 'Note 3.2 / 5 sur 47 avis clients' },
+          { t: 'bad', x: '22 avis négatifs sans réponse' },
+          { t: 'bad', x: 'Dernière réponse à un avis il y a 14 mois' }
+        ]},
+        { title: 'Photos et visuels', flags: [
+          { t: 'bad',  x: '2 photos seulement sur la fiche' },
+          { t: 'warn', x: 'Photos en basse résolution' }
+        ]},
+        { title: 'Informations de base', flags: [
+          { t: 'bad',  x: 'Description vide' },
+          { t: 'warn', x: 'Une seule catégorie déclarée' }
+        ]},
+        { title: 'Présence locale', flags: [
+          { t: 'bad', x: 'Pas de zone d\'intervention précisée' },
+          { t: 'bad', x: 'Aucun service détaillé renseigné' }
+        ]},
+        { title: 'Engagement', flags: [
+          { t: 'bad', x: 'Aucun post Google Business' },
+          { t: 'bad', x: 'Questions clients sans réponse' }
+        ]}
+      ]
+    },
+    '0149': {
+      tag: 'FICHEBOOST · AUDIT №0149',
+      biz: 'Salon Élise Coiffure',
+      cat: 'Salon de coiffure, Anglet',
+      score: 81, tone: 'green',
+      sections: [
+        { title: 'Avis et réputation', flags: [
+          { t: 'good', x: '89 % des avis avec réponse' },
+          { t: 'good', x: 'Note 4.7 / 5 sur 156 avis' },
+          { t: 'good', x: 'Réponses personnalisées et professionnelles' }
+        ]},
+        { title: 'Photos et visuels', flags: [
+          { t: 'good', x: '34 photos récentes ajoutées' },
+          { t: 'good', x: 'Galerie de réalisations à jour' }
+        ]},
+        { title: 'Informations de base', flags: [
+          { t: 'warn', x: 'Horaires fériés à compléter' },
+          { t: 'good', x: 'Tous les services tarifés indiqués' }
+        ]},
+        { title: 'Présence locale', flags: [
+          { t: 'good', x: 'Description complète (650 / 750 caractères)' },
+          { t: 'good', x: 'Attributs détaillés (Wi-Fi, paiement sans contact, etc.)' }
+        ]},
+        { title: 'Engagement', flags: [
+          { t: 'good', x: 'Posts Google Business réguliers' },
+          { t: 'warn', x: 'Quelques questions clients sans réponse' }
+        ]}
+      ]
+    },
+    '0150': {
+      tag: 'FICHEBOOST · AUDIT №0150',
+      biz: 'Pizzeria Da Mario',
+      cat: 'Restaurant italien, Biarritz',
+      score: 47, tone: 'amber',
+      sections: [
+        { title: 'Avis et réputation', flags: [
+          { t: 'bad',  x: '3 derniers avis négatifs sans réponse' },
+          { t: 'warn', x: 'Note 3.9 / 5 sur 89 avis' },
+          { t: 'warn', x: 'Réponses standardisées (copier-coller)' }
+        ]},
+        { title: 'Photos et visuels', flags: [
+          { t: 'warn', x: 'Menu non renseigné sur la fiche' },
+          { t: 'warn', x: 'Photos majoritairement anciennes (plus de 2 ans)' }
+        ]},
+        { title: 'Informations de base', flags: [
+          { t: 'good', x: 'Coordonnées et horaires complets' },
+          { t: 'good', x: 'Service livraison indiqué' }
+        ]},
+        { title: 'Présence locale', flags: [
+          { t: 'warn', x: 'Description peu engageante' },
+          { t: 'bad',  x: 'Pas d\'attributs (terrasse, animaux, etc.)' }
+        ]},
+        { title: 'Engagement', flags: [
+          { t: 'bad',  x: 'Aucun post depuis 5 mois' },
+          { t: 'warn', x: 'Carte des prix absente' }
+        ]}
+      ]
+    }
+  };
+
+  const modal = document.getElementById('modal');
+  const mTag = document.getElementById('mTag');
+  const mTitle = document.getElementById('modalTitle');
+  const mCat = document.getElementById('mCat');
+  const mScore = document.getElementById('mScore');
+  const mGauge = document.getElementById('mGauge');
+  const mBody = document.getElementById('mBody');
+
+  function openAudit(id){
+    const a = audits[id];
+    if(!a) return;
+    mTag.textContent = a.tag;
+    mTitle.textContent = a.biz;
+    mCat.textContent = a.cat;
+    mScore.textContent = a.score;
+    mGauge.className = 'gauge ' + a.tone;
+    const offset = 283 * (1 - a.score / 100);
+    mGauge.querySelector('.bar').setAttribute('stroke-dashoffset', offset.toFixed(1));
+    mBody.innerHTML = a.sections.map(s =>
+      '<div class="m-section"><h4>' + s.title + '</h4>' +
+      s.flags.map(f =>
+        '<div class="flag ' + f.t + '"><span class="dt"></span>' + f.x + '</div>'
+      ).join('') +
+      '</div>'
+    ).join('');
+    modal.classList.add('open');
+    document.body.classList.add('lock');
+  }
+
+  function closeModal(){
+    modal.classList.remove('open');
+    document.body.classList.remove('lock');
+  }
+
+  document.querySelectorAll('.report-card').forEach(card => {
+    card.addEventListener('click', () => openAudit(card.dataset.audit));
+    card.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        openAudit(card.dataset.audit);
+      }
+    });
+  });
+
+  modal.addEventListener('click', e => {
+    if(e.target.hasAttribute('data-close')) closeModal();
+  });
+
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  // Pagination dots
+  const slider = document.getElementById('slider');
+  const cards = slider.querySelectorAll('.report-card');
+  const pager = document.getElementById('pager');
+
+  cards.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.setAttribute('aria-label', 'Aller à l\'exemple ' + (i + 1));
+    if(i === 0) b.classList.add('active');
+    b.addEventListener('click', () => {
+      const cardW = cards[0].offsetWidth + 20;
+      slider.scrollTo({ left: i * cardW, behavior: 'smooth' });
+    });
+    pager.appendChild(b);
+  });
+
+  let scrollTimer;
+  slider.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      const cardW = cards[0].offsetWidth + 20;
+      const idx = Math.round(slider.scrollLeft / cardW);
+      pager.querySelectorAll('button').forEach((b, i) => {
+        b.classList.toggle('active', i === idx);
+      });
+    }, 50);
+  });
+</script>
+
+</body>
+</html>
