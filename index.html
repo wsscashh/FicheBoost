@@ -66,9 +66,13 @@
     text-decoration:none;color:var(--ink);
   }
   .logo-mark{
-    width:34px;height:34px;flex:none;object-fit:contain;
-    border-radius:50%;
-  }
+  width:26px;height:26px;border-radius:7px;
+  background:var(--ink);position:relative;flex:none;
+}
+.logo-mark::after{
+  content:"";position:absolute;inset:6px;background:#fff;
+  clip-path:polygon(0 100%, 0 60%, 35% 60%, 35% 30%, 70% 30%, 70% 0, 100% 0, 100% 100%);
+}
 
   /* CTA */
   .cta{
@@ -494,7 +498,7 @@
 
 <nav class="top">
   <div class="wrap">
-    <a class="logo" href="#"><img class="logo-mark" src="/image.png" alt="" width="34" height="34">FicheBoost</a>
+    <a class="logo" href="#"><span class="logo-mark" aria-hidden="true"></span>FicheBoost</a>
     <a class="cta cta-s" href="#tarif">Auditer ma fiche <span class="arr">→</span></a>
   </div>
 </nav>
@@ -752,7 +756,7 @@
 <footer>
   <div class="wrap">
     <div class="foot-top">
-      <a class="logo" href="#"><img class="logo-mark" src="/image.png" alt="" width="34" height="34">FicheBoost</a>
+      <a class="logo" href="#"><span class="logo-mark" aria-hidden="true"></span>FicheBoost</a>
       <div class="foot-links">
         <a href="mailto:contact@kaelix.store">Contact</a>
         <a href="#faq">FAQ</a>
