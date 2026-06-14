@@ -6,10 +6,9 @@
 <title>FicheBoost · Audit de votre fiche Google Business · 19 €</title>
 <meta name="description" content="FicheBoost analyse votre fiche Google Business comme un consultant : note sur 100, points faibles précis, plan d'action. Rapport PDF en 10 minutes, 19 €, sans abonnement.">
 
-<link rel="apple-touch-icon" sizes="180x180" href="/image.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/image.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/image.png">
-<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -25,6 +24,7 @@
     --line-strong:#d9d4c4;
     --yellow:#f5d637;
     --yellow-soft:#fdf0a5;
+    --yellow-deep:#a87800;
     --red:#dc2626;
     --red-soft:#fde7e6;
     --amber:#d97706;
@@ -59,7 +59,7 @@
   }
   nav.top .wrap{
     display:flex;align-items:center;justify-content:space-between;
-    padding-top:16px;padding-bottom:16px;
+    padding-top:14px;padding-bottom:14px;
   }
   .logo{
     display:flex;align-items:center;gap:10px;
@@ -68,13 +68,8 @@
     text-decoration:none;color:var(--ink);
   }
   .logo-mark{
-    width:32px;height:32px;border-radius:50%;
-    background:var(--ink);position:relative;flex:none;
-    display:flex;align-items:center;justify-content:center;
-  }
-  .logo-mark::after{
-    content:"";position:absolute;width:18px;height:18px;background:#fff;
-    border-radius:3px;clip-path:polygon(0 100%, 0 55%, 35% 55%, 35% 25%, 70% 25%, 70% 0, 100% 0, 100% 100%);
+    width:34px;height:34px;flex:none;object-fit:contain;
+    border-radius:50%;
   }
 
   /* CTA */
@@ -108,7 +103,7 @@
     max-width:920px;margin:0 auto 30px;
   }
   .hero h1 .strike{
-position:relative;white-space:nowrap;color:var(--gray-light);
+    position:relative;white-space:nowrap;color:var(--gray-light);
   }
   .hero h1 .strike::after{
     content:"";position:absolute;left:-4%;right:-4%;top:54%;
@@ -215,10 +210,9 @@ position:relative;white-space:nowrap;color:var(--gray-light);
 
   .report-foot{
     border-top:1px dashed var(--line-strong);padding-top:14px;
-display:flex;justify-content:space-between;align-items:center;
+    display:flex;justify-content:space-between;align-items:center;
     font-size:.78rem;color:var(--ink);margin-top:auto;font-weight:500;
   }
-  .report-foot .mono{font-size:.7rem;color:var(--gray-light);font-weight:400}
   .report-foot .arr{transition:transform .15s ease;display:inline-block}
   .report-card:hover .report-foot .arr{transform:translateX(3px)}
 
@@ -247,7 +241,7 @@ display:flex;justify-content:space-between;align-items:center;
   }
   .modal-panel{
     position:relative;background:#fff;border-radius:18px;
-    max-width:680px;width:100%;max-height:90vh;overflow-y:auto;
+    max-width:700px;width:100%;max-height:90vh;overflow-y:auto;
     box-shadow:0 30px 80px rgba(0,0,0,.3);
     animation:rise .25s cubic-bezier(.22,1,.36,1);
   }
@@ -275,13 +269,41 @@ display:flex;justify-content:space-between;align-items:center;
   .modal-head .gauge{width:96px;height:96px}
   .modal-head .gauge .val b{font-size:1.65rem}
   .modal-body{padding:24px 32px 28px}
-  .m-section{margin-bottom:22px}
+  .m-section{margin-bottom:18px}
   .m-section:last-child{margin-bottom:0}
-  .m-section h4{
-    font-size:.78rem;font-family:'JetBrains Mono',monospace;
-    font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--gray);margin-bottom:10px;font-style:normal;
+  .m-head{
+    width:100%;background:var(--bg-soft);border:1px solid var(--line);
+    padding:11px 14px;border-radius:9px;cursor:pointer;
+    display:flex;justify-content:space-between;align-items:center;
+    margin-bottom:10px;text-align:left;font-family:inherit;
+    color:var(--ink);
+    transition:background .15s,border-color .15s;
   }
+  .m-head:hover{background:var(--yellow-soft);border-color:var(--yellow)}
+  .m-head[aria-expanded="true"]{background:var(--yellow);border-color:var(--yellow)}
+  .m-title{
+    font-family:'JetBrains Mono',monospace;font-size:.76rem;
+    font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  }
+  .m-toggle{
+    font-family:'JetBrains Mono',monospace;font-size:.66rem;font-weight:600;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--gray);
+    display:flex;align-items:center;gap:7px;
+  }
+  .m-head:hover .m-toggle{color:var(--yellow-deep)}
+  .m-head[aria-expanded="true"] .m-toggle{color:var(--ink)}
+  .m-ic{
+    font-size:1.05rem;font-weight:500;
+    transition:transform .2s ease;display:inline-block;line-height:1;
+  }
+  .m-head[aria-expanded="true"] .m-ic{transform:rotate(45deg)}
+  .m-tip{
+    background:var(--yellow-soft);padding:14px 16px;border-radius:8px;
+    font-size:.9rem;color:var(--ink-soft);line-height:1.6;
+    margin-bottom:10px;border-left:3px solid var(--yellow);
+    animation:tipIn .25s ease;
+  }
+  @keyframes tipIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
   .m-section .flag{font-size:.88rem;padding:9px 12px;margin-bottom:6px}
   .m-section .flag:last-child{margin-bottom:0}
   .modal-foot{
@@ -299,6 +321,7 @@ display:flex;justify-content:space-between;align-items:center;
     .modal-head{padding:28px 24px 20px;flex-direction:column;align-items:flex-start;gap:20px}
     .modal-body{padding:20px 24px 24px}
     .modal-foot{padding:18px 24px;border-radius:0}
+    .m-toggle span:not(.m-ic){display:none}
   }
 
   /* STEPS */
@@ -316,7 +339,7 @@ display:flex;justify-content:space-between;align-items:center;
     letter-spacing:-0.04em;color:var(--ink);line-height:1;
   }
   .step .tag{
-background:var(--yellow);color:var(--ink);
+    background:var(--yellow);color:var(--ink);
     font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:600;
     padding:5px 10px;border-radius:6px;letter-spacing:.04em;
   }
@@ -405,7 +428,7 @@ background:var(--yellow);color:var(--ink);
   details[open] summary .pm{transform:rotate(45deg)}
   details .a{
     padding:0 4px 24px;color:var(--gray);font-size:.95rem;
-    max-width:640px;line-height:1.7;
+    max-width:680px;line-height:1.7;
   }
 
   /* FINAL */
@@ -422,7 +445,7 @@ background:var(--yellow);color:var(--ink);
     height:.32em;background:var(--yellow);z-index:-1;border-radius:3px;
   }
   .final p{
-color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
+    color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
   }
 
   /* FOOTER */
@@ -447,11 +470,14 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
   .legal details + details{border-top:1px solid var(--line)}
   .legal summary{font-size:.96rem;padding:16px 0;font-weight:700}
   .legal .a{font-size:.84rem;line-height:1.7}
-  .legal .a p{margin-bottom:10px}
+  .legal .a p{margin-bottom:12px}
+  .legal .a p:last-child{margin-bottom:0}
   .copy{
     margin-top:30px;color:var(--gray-light);font-size:.78rem;
     text-align:center;
   }
+  .copy a{color:var(--gray);text-decoration:underline;text-underline-offset:2px}
+  .copy a:hover{color:var(--ink)}
   .copy .small{font-size:.65rem;letter-spacing:.08em;opacity:.7;margin-left:4px;font-family:'JetBrains Mono',monospace}
 
   @media (max-width:760px){
@@ -470,7 +496,7 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
 
 <nav class="top">
   <div class="wrap">
-    <a class="logo" href="#"><span class="logo-mark" aria-hidden="true"></span>FicheBoost</a>
+    <a class="logo" href="#"><img class="logo-mark" src="/image.png" alt="" width="34" height="34">FicheBoost</a>
     <a class="cta cta-s" href="#tarif">Auditer ma fiche <span class="arr">→</span></a>
   </div>
 </nav>
@@ -478,7 +504,7 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
 <header class="hero">
   <div class="wrap">
     <h1>Votre fiche Google travaille <span class="strike">pour</span> <span class="hl">contre&nbsp;vous.</span></h1>
-    <p class="sub">La fiche Google is la première chose que vos clients voient, avant votre vitrine, avant votre site. <strong>FicheBoost analyse la vôtre comme le ferait un consultant</strong> : note sur 100, points faibles précis, plan d'action concret. Rapport PDF livré en 10 minutes.</p>
+    <p class="sub">La fiche Google est la première chose que vos clients voient, avant votre vitrine, avant votre site. <strong>FicheBoost analyse la vôtre comme le ferait un consultant</strong> : note sur 100, points faibles précis, plan d'action concret. Rapport PDF livré en 10 minutes.</p>
     <a class="cta" href="#tarif">Obtenir mon audit 19&nbsp;€ <span class="arr">→</span></a>
     <p class="meta">Sans abonnement <span class="sep">·</span> Livraison en 10 min <span class="sep">·</span> Paiement sécurisé Stripe</p>
   </div>
@@ -489,7 +515,7 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
     <div class="sec-head">
       <span class="pill">Exemples de rapports</span>
       <h2>Voici ce que vous recevez.</h2>
-      <p>Quatre extraits de rapports, anonymisés. Cliquez sur une fiche pour voir l'analyse complète.</p>
+      <p>Quatre extraits de rapports, anonymisés. Cliquez sur une fiche puis sur chaque catégorie pour voir comment agir.</p>
     </div>
     <div class="slider-wrap">
       <div class="slider-track" id="slider">
@@ -517,7 +543,7 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
             </div>
           </div>
           <div class="report-foot">
-<span>Voir l'analyse complète</span>
+            <span>Voir l'analyse complète</span>
             <span class="arr">→</span>
           </div>
         </div>
@@ -600,7 +626,7 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
               <div class="flag good"><span class="dt"></span>Coordonnées et horaires complets</div>
             </div>
           </div>
-<div class="report-foot">
+          <div class="report-foot">
             <span>Voir l'analyse complète</span>
             <span class="arr">→</span>
           </div>
@@ -621,26 +647,17 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
     </div>
     <div class="steps">
       <div class="step">
-        <div class="top">
-          <span class="n">01</span>
-          <span class="tag">1 min</span>
-        </div>
+        <div class="top"><span class="n">01</span><span class="tag">1 min</span></div>
         <h3>Indiquez votre fiche</h3>
         <p>Le nom de votre établissement ou le lien de votre fiche Google, et l'email où recevoir le rapport. C'est tout.</p>
       </div>
       <div class="step">
-        <div class="top">
-          <span class="n">02</span>
-          <span class="tag">auto</span>
-        </div>
+        <div class="top"><span class="n">02</span><span class="tag">auto</span></div>
         <h3>Analyse de 40+ critères</h3>
         <p>Avis et réponses, photos, horaires, description, catégories, complétude, comparaison avec les fiches concurrentes proches.</p>
       </div>
       <div class="step">
-        <div class="top">
-          <span class="n">03</span>
-          <span class="tag">~10 min</span>
-        </div>
+        <div class="top"><span class="n">03</span><span class="tag">~10 min</span></div>
         <h3>Recevez votre plan d'action</h3>
         <p>Un PDF clair : votre note, ce qui vous coûte des clients, et les 3 actions prioritaires à appliquer cette semaine.</p>
       </div>
@@ -656,30 +673,12 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
       <p>Un audit de 6 pages, écrit en français clair. Pas de jargon marketing, pas de blabla pour remplir.</p>
     </div>
     <div class="grid-2">
-      <div class="item">
-        <span class="ic" aria-hidden="true">/100</span>
-        <div><h3>Note globale</h3><p>Un score sur 100 basé sur 40+ critères, pour savoir où vous en êtes et mesurer vos progrès au fil du temps.</p></div>
-      </div>
-      <div class="item">
-        <span class="ic" aria-hidden="true">★</span>
-        <div><h3>Analyse de vos avis</h3><p>Avis sans réponse, ton de vos réponses, points qui reviennent chez vos clients en bien comme en mal.</p></div>
-      </div>
-      <div class="item">
-        <span class="ic" aria-hidden="true">▣</span>
-        <div><h3>Photos et visuels</h3><p>Fraîcheur, quantité, qualité perçue. Les photos sont l'un des premiers déclencheurs de visite en local.</p></div>
-      </div>
-      <div class="item">
-        <span class="ic" aria-hidden="true">VS</span>
-        <div><h3>Comparaison locale</h3><p>Votre fiche face aux établissements similaires autour de vous. Où ils font mieux, où vous pouvez les dépasser.</p></div>
-      </div>
-      <div class="item">
-        <span class="ic" aria-hidden="true">i</span>
-        <div><h3>Complétude</h3><p>Horaires, catégories, attributs, description. Chaque champ vide ou obsolète est signalé.</p></div>
-      </div>
-      <div class="item">
-        <span class="ic" aria-hidden="true">→</span>
-        <div><h3>Plan d'action priorisé</h3><p>Les 3 actions à plus fort impact, expliquées pas à pas. Faisables vous-même, sans agence et sans budget.</p></div>
-      </div>
+      <div class="item"><span class="ic">/100</span><div><h3>Note globale</h3><p>Un score sur 100 basé sur 40+ critères, pour savoir où vous en êtes et mesurer vos progrès au fil du temps.</p></div></div>
+      <div class="item"><span class="ic">★</span><div><h3>Analyse de vos avis</h3><p>Avis sans réponse, ton de vos réponses, points qui reviennent chez vos clients en bien comme en mal.</p></div></div>
+      <div class="item"><span class="ic">▣</span><div><h3>Photos et visuels</h3><p>Fraîcheur, quantité, qualité perçue. Les photos sont l'un des premiers déclencheurs de visite en local.</p></div></div>
+      <div class="item"><span class="ic">VS</span><div><h3>Comparaison locale</h3><p>Votre fiche face aux établissements similaires autour de vous. Où ils font mieux, où vous pouvez les dépasser.</p></div></div>
+      <div class="item"><span class="ic">i</span><div><h3>Complétude</h3><p>Horaires, catégories, attributs, description. Chaque champ vide ou obsolète est signalé.</p></div></div>
+      <div class="item"><span class="ic">→</span><div><h3>Plan d'action priorisé</h3><p>Les 3 actions à plus fort impact, expliquées pas à pas. Faisables vous-même, sans agence et sans budget.</p></div></div>
     </div>
   </div>
 </section>
@@ -697,7 +696,7 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
       <div class="pricing-right">
         <ul class="inclus">
           <li><span class="ck">✓</span>Audit complet de votre fiche (40+ critères)</li>
-<li><span class="ck">✓</span>Rapport PDF de 6 pages, en français clair</li>
+          <li><span class="ck">✓</span>Rapport PDF de 6 pages, en français clair</li>
           <li><span class="ck">✓</span>Comparaison avec vos concurrents proches</li>
           <li><span class="ck">✓</span>Plan d'action : 3 priorités, pas à pas</li>
           <li><span class="ck">✓</span>Livré par email sous 10 minutes</li>
@@ -718,23 +717,27 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
     <div class="faq">
       <details>
         <summary>En quoi c'est différent d'un audit gratuit d'agence ? <span class="pm">+</span></summary>
-        <div class="a">Les « audits gratuits » d'agences sont des outils commerciaux. Leur but est de vous vendre une prestation à plusieurs centaines d'euros par mois. FicheBoost vous vend le rapport, point. Pas de rappel téléphonique, pas de devis derrière, pas d'engagement. Vous appliquez le plan d'action vous-même.</div>
+        <div class="a">Les « audits gratuits » d'agences sont des outils commerciaux. Leur but est de vous vendre une prestation à plusieurs centaines d'euros par mois. FicheBoost vous vend le rapport, point. Pas de rappel téléphonique, pas de devis derrière, pas d'engagement. Vous appliquez le plan d'action vous-même, à votre rythme.</div>
       </details>
       <details>
         <summary>Combien de temps pour recevoir mon rapport ? <span class="pm">+</span></summary>
-        <div class="a">L'analyse est automatisée. Vous recevez votre rapport PDF par email environ 10 minutes après le paiement. Si rien n'arrive sous 30 minutes, vérifiez vos spams puis écrivez-nous, nous renvoyons le rapport ou vous remboursons.</div>
+        <div class="a">L'analyse est automatisée. Vous recevez votre rapport PDF par email environ 10 minutes après le paiement, et au plus tard sous 24 heures ouvrées. Si rien n'arrive sous 30 minutes, vérifiez vos spams puis écrivez-nous, nous renvoyons le rapport ou vous remboursons.</div>
       </details>
       <details>
         <summary>Ça marche pour quel type d'établissement ? <span class="pm">+</span></summary>
-        <div class="a">Tout établissement disposant d'une fiche Google Business : commerces, restaurants, artisans, salons, cabinets, garages. Si vos clients peuvent vous trouver sur Google Maps, l'audit s'applique.</div>
+        <div class="a">Tout établissement disposant d'une fiche Google Business Profile : commerces, restaurants, artisans, salons, cabinets, garages, professions libérales. Si vos clients peuvent vous trouver sur Google Maps, l'audit s'applique.</div>
       </details>
       <details>
         <summary>L'analyse est faite par une IA, c'est fiable ? <span class="pm">+</span></summary>
-        <div class="a">L'analyse combine des données factuelles de votre fiche (avis, photos, horaires, complétude, récupérées via l'API officielle Google) et une intelligence artificielle entraînée à les interpréter selon les bonnes pratiques du référencement local. Le rapport reste un avis indicatif : c'est un diagnostic et un plan d'action, pas une garantie de résultat.</div>
+        <div class="a">L'analyse combine des données factuelles de votre fiche (avis, photos, horaires, complétude) récupérées via l'API officielle Google, et une intelligence artificielle entraînée à les interpréter selon les bonnes pratiques du référencement local. Le rapport reste un avis indicatif : c'est un diagnostic et un plan d'action, pas une garantie de résultat commercial.</div>
       </details>
       <details>
         <summary>Avez-vous besoin d'accéder à mon compte Google ? <span class="pm">+</span></summary>
         <div class="a">Non, jamais. L'audit se base uniquement sur les informations publiques de votre fiche, celles que vos clients voient. Aucun mot de passe, aucun accès, aucune autorisation à donner.</div>
+      </details>
+      <details>
+        <summary>Et si je ne suis pas satisfait du rapport ? <span class="pm">+</span></summary>
+        <div class="a">Écrivez-nous à contact@kaelix.store dans les 7 jours suivant la livraison. Vous êtes remboursé intégralement, sans justification à fournir, dans un délai maximum de 14 jours.</div>
       </details>
     </div>
   </div>
@@ -751,7 +754,7 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
 <footer>
   <div class="wrap">
     <div class="foot-top">
-      <a class="logo" href="#"><span class="logo-mark" aria-hidden="true"></span>FicheBoost</a>
+      <a class="logo" href="#"><img class="logo-mark" src="/image.png" alt="" width="34" height="34">FicheBoost</a>
       <div class="foot-links">
         <a href="mailto:contact@kaelix.store">Contact</a>
         <a href="#faq">FAQ</a>
@@ -763,34 +766,70 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
       <details>
         <summary>Mentions légales <span class="pm">+</span></summary>
         <div class="a">
-          <p><strong>Éditeur du site</strong> : FicheBoost est un service édité par Loris BILLA, entrepreneur individuel (micro-entreprise), 16 Avenue du 8 Mai 1945 , 64100 Bayonne, France. SIRET : 939 793 139 00022 Contact : contact@kaelix.store.</p>
-          <p><strong>Hébergement</strong> : Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis.</p>
-<p><strong>Directeur de la publication</strong> : Loris BILLAS.</p>
-          <p><strong>Propriété intellectuelle</strong> : L'ensemble des contenus du site et des rapports générés est protégé. FicheBoost n'est pas affilié à Google LLC. « Google » et « Google Business Profile » sont des marques de Google LLC.</p>
+          <p><strong>Éditeur du site</strong><br>
+          FicheBoost est un service édité par Loris Billa, entrepreneur individuel (micro-entreprise).<br>
+          Adresse : 16 avenue du 8 mai 1945, 64100 Bayonne, France.<br>
+          SIREN : 939 793 139 · SIRET : 939 793 139 00022<br>
+          TVA non applicable, article 293 B du Code général des impôts.<br>
+          Email : contact@kaelix.store · Téléphone : 07 81 80 93 65</p>
+          <p><strong>Hébergement</strong><br>
+          Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis. Site : vercel.com.</p>
+          <p><strong>Directeur de la publication</strong><br>
+          Loris Billa.</p>
+          <p><strong>Propriété intellectuelle</strong><br>
+          L'ensemble des contenus du site (textes, visuels, code, charte graphique) et des rapports générés est la propriété exclusive de Loris Billa, sauf mentions contraires. Toute reproduction sans autorisation est interdite.<br>
+          FicheBoost n'est pas affilié à Google LLC. « Google », « Google Business Profile » et « Google Maps » sont des marques de Google LLC.</p>
         </div>
       </details>
       <details>
         <summary>Conditions générales de vente <span class="pm">+</span></summary>
         <div class="a">
-          <p><strong>Objet</strong> : FicheBoost fournit un rapport d'audit numérique (PDF) analysant la fiche Google Business indiquée par le client, au prix de 19 € TTC, paiement unique via Stripe.</p>
-          <p><strong>Livraison</strong> : Le rapport est livré par email à l'adresse indiquée, généralement sous 10 minutes et au plus tard sous 24 heures.</p>
-          <p><strong>Droit de rétractation</strong> : Conformément à l'article L221-28 du Code de la consommation, le droit de rétractation ne s'applique pas aux contenus numériques fournis immédiatement après accord exprès du client. En passant commande, vous acceptez l'exécution immédiate et renouncez à votre droit de rétractation.</p>
-          <p><strong>Garantie commerciale</strong> : indépendamment de ce qui précède, FicheBoost offre un remboursement intégral sur simple demande sous 7 jours si le rapport ne vous satisfait pas.</p>
-          <p><strong>Nature du service</strong> : Le rapport constitue un avis indicatif fondé sur les données publiques de la fiche et ne garantit aucun résultat commercial. Médiation de la consommation : [organisme à compléter].</p>
+          <p><strong>1. Éditeur du service</strong><br>
+          Loris Billa, micro-entreprise, 16 avenue du 8 mai 1945, 64100 Bayonne. SIRET 939 793 139 00022. Email : contact@kaelix.store. Téléphone : 07 81 80 93 65. TVA non applicable, article 293 B du CGI.</p>
+          <p><strong>2. Objet</strong><br>
+          FicheBoost fournit un rapport d'audit numérique au format PDF analysant la fiche Google Business Profile indiquée par le client, au prix de 19 € TTC, par paiement unique via Stripe.</p>
+          <p><strong>3. Commande et paiement</strong><br>
+          La commande est validée à la réception du paiement. Le paiement est sécurisé par Stripe Payments Europe Ltd. FicheBoost ne stocke aucune donnée bancaire. Une facture est délivrée par email après paiement.</p>
+          <p><strong>4. Livraison</strong><br>
+          Le rapport est envoyé par email à l'adresse renseignée lors de la commande, généralement sous 10 minutes et au plus tard sous 24 heures ouvrées suivant le paiement. En cas de non-réception, le client peut contacter contact@kaelix.store pour renvoi gratuit ou remboursement.</p>
+          <p><strong>5. Droit de rétractation</strong><br>
+          Conformément à l'article L221-28 1° du Code de la consommation, le client renonce expressément à son droit de rétractation pour les contenus numériques fournis sur support immatériel dont l'exécution a commencé avec son accord préalable exprès. En passant commande, le client reconnaît avoir reçu cette information et accepte l'exécution immédiate.</p>
+          <p><strong>6. Garantie commerciale</strong><br>
+          Indépendamment du point 5, FicheBoost offre un remboursement intégral sur simple demande adressée à contact@kaelix.store dans un délai de 7 jours suivant la livraison du rapport, sans justification à fournir. Le remboursement est effectué sous 14 jours maximum.</p>
+          <p><strong>7. Nature et limites du service</strong><br>
+          Le rapport constitue un avis indicatif fondé sur les données publiques de la fiche Google Business Profile à la date de l'analyse. FicheBoost ne garantit aucun résultat commercial, de référencement ou de visibilité particulier découlant de l'application des recommandations.</p>
+          <p><strong>8. Responsabilité</strong><br>
+          La responsabilité de FicheBoost est limitée au montant payé par le client pour le service. FicheBoost ne saurait être tenu responsable des dommages indirects (perte de chiffre d'affaires, perte de clientèle, etc.).</p>
+          <p><strong>9. Médiation de la consommation</strong><br>
+          Conformément à l'article L612-1 du Code de la consommation, le client consommateur a le droit de recourir gratuitement à un médiateur de la consommation. FicheBoost adhère au service de médiation CM2C : 14 rue Saint-Jean, 75017 Paris (www.cm2c.net).</p>
+          <p><strong>10. Loi applicable et juridiction</strong><br>
+          Les présentes CGV sont soumises au droit français. Tout litige relèvera de la compétence des tribunaux français compétents.</p>
         </div>
       </details>
       <details>
-        <summary>Confidentialité et données personnelles <span class="pm">+</span></summary>
+        <summary>Confidentialité et données personnelles (RGPD) <span class="pm">+</span></summary>
         <div class="a">
-          <p><strong>Données collectées</strong> : adresse email (livraison du rapport), nom ou lien de l'établissement audité, données de paiement traitées exclusivement par Stripe (FicheBoost ne stocke aucune donnée bancaire).</p>
-          <p><strong>Finalité</strong> : exécution de la commande et envoi du rapport. Aucune revente de données, aucune inscription à une newsletter sans consentement.</p>
-          <p><strong>Sous-traitants</strong> : Stripe (paiement), Anthropic (analyse IA), Google (données publiques via API officielle), hébergement Vercel. Certains traitements peuvent impliquer des transferts hors UE, encadrés par des clauses contractuelles types.</p>
-          <p><strong>Vos droits</strong> : vous disposez d'un droit d'accès, de rectification et de suppression : contact@kaelix.store.</p>
+          <p><strong>Responsable du traitement</strong><br>
+          Loris Billa, micro-entreprise (FicheBoost), 16 avenue du 8 mai 1945, 64100 Bayonne. Contact : contact@kaelix.store.</p>
+          <p><strong>Données collectées</strong><br>
+          Adresse email du client, nom ou lien de l'établissement audité, données de paiement (traitées exclusivement par Stripe, jamais stockées par FicheBoost).</p>
+          <p><strong>Finalités du traitement</strong><br>
+          Exécution de la commande, envoi du rapport, facturation, réponse aux demandes du client. Aucune utilisation marketing sans consentement explicite.</p>
+          <p><strong>Base légale</strong><br>
+          Exécution du contrat (article 6.1.b du RGPD) pour la livraison du service. Obligations légales (article 6.1.c) pour la facturation et la conservation comptable.</p>
+          <p><strong>Durée de conservation</strong><br>
+          Email et données de commande : conservés 5 ans pour les obligations comptables et fiscales. Données de paiement : selon les durées de conservation propres à Stripe.</p>
+          <p><strong>Sous-traitants</strong><br>
+          Stripe Payments Europe Ltd (paiement), Anthropic PBC (analyse par intelligence artificielle), Google LLC (données publiques via API Google Places), Vercel Inc. (hébergement). Certains traitements impliquent des transferts hors UE, encadrés par les clauses contractuelles types de la Commission européenne.</p>
+          <p><strong>Vos droits</strong><br>
+          Vous disposez d'un droit d'accès, de rectification, d'effacement, de portabilité et d'opposition. Pour exercer ces droits : contact@kaelix.store. Vous pouvez également introduire une réclamation auprès de la CNIL (www.cnil.fr).</p>
+          <p><strong>Cookies</strong><br>
+          Ce site utilise uniquement des cookies techniques nécessaires à son fonctionnement. Aucun cookie de tracking ou publicitaire n'est déposé.</p>
         </div>
       </details>
     </div>
 
-    <p class="copy">© 2026 FicheBoost · Propulsé par <a href="https://kaelix.store" style="color:inherit;text-decoration:underline">Kaelix Voice</a> · Fait en France <span class="small">FR</span></p>
+    <p class="copy">© 2026 FicheBoost · Propulsé par <a href="https://kaelix.store">Kaelix Voice</a> · Fait en France <span class="small">FR</span></p>
   </div>
 </footer>
 
@@ -821,39 +860,44 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
 </div>
 
 <script>
-  // Audit data
   const audits = {
     '0147': {
-    tag: 'FICHEBOOST - AUDIT №0147',
-    biz: 'Boulangerie du Port',
-    name: 'Kaelix Voice',
-    title: "L'IA vocale 24/7 pour artisans BTP",
-    description: "L'IA qui répond à vos clients – vous gardez le contrôle. Qualifie, résume en SMS, vous",
-    cat: 'Boulangerie, Bayonne',
-    score: 58,
-    tone: 'amber',
+      tag: 'FICHEBOOST · AUDIT №0147',
+      biz: 'Boulangerie du Port',
+      cat: 'Boulangerie, Bayonne',
+      score: 58, tone: 'amber',
       sections: [
-        { title: 'Avis et réputation', flags: [
-          { t: 'bad',  x: '14 avis sans réponse depuis plus de 60 jours' },
-          { t: 'warn', x: 'Note moyenne 4.1 / 5 sur 67 avis' },
-          { t: 'good', x: 'Pas d\'avis négatif récent' }
-        ]},
-        { title: 'Photos et visuels', flags: [
-          { t: 'warn', x: 'Aucune photo ajoutée depuis 11 mois' },
-          { t: 'warn', x: '8 photos seulement (moyenne du secteur : 24)' }
-        ]},
-        { title: 'Informations de base', flags: [
-          { t: 'good', x: 'Horaires complets et à jour' },
-          { t: 'good', x: 'Téléphone et site web renseignés' }
-        ]},
-        { title: 'Présence locale', flags: [
-          { t: 'warn', x: 'Description courte (87 caractères sur 750 possibles)' },
-          { t: 'bad',  x: 'Aucun attribut détaillé (terrasse, sans contact, etc.)' }
-        ]},
-        { title: 'Engagement', flags: [
-          { t: 'bad',  x: 'Aucun post Google Business depuis 8 mois' },
-          { t: 'warn', x: 'Questions / réponses non configurées' }
-        ]}
+        { title: 'Avis et réputation',
+          tip: 'Répondre aux avis montre que vous êtes engagé. 14 avis sans réponse sur 60 jours, c\'est 14 occasions perdues de récupérer un client mécontent ou de fidéliser un satisfait. Le rapport vous donne le ton à adopter par type d\'avis et un modèle à personnaliser en 30 secondes.',
+          flags: [
+            { t: 'bad',  x: '14 avis sans réponse depuis plus de 60 jours' },
+            { t: 'warn', x: 'Note moyenne 4.1 / 5 sur 67 avis' },
+            { t: 'good', x: 'Pas d\'avis négatif récent' }
+          ]},
+        { title: 'Photos et visuels',
+          tip: 'Une photo récente peut générer jusqu\'à 35 % de visites supplémentaires. À 8 photos contre 24 en moyenne dans votre secteur, votre fiche paraît moins active. Le rapport liste les types de photos qui manquent et la cadence idéale pour les renouveler.',
+          flags: [
+            { t: 'warn', x: 'Aucune photo ajoutée depuis 11 mois' },
+            { t: 'warn', x: '8 photos seulement (moyenne du secteur : 24)' }
+          ]},
+        { title: 'Informations de base',
+          tip: 'Vos coordonnées sont bonnes, c\'est la base. Le rapport vérifie en plus quelques détails que les clients regardent et que vous oubliez souvent : moyens de paiement acceptés, accessibilité, langues parlées.',
+          flags: [
+            { t: 'good', x: 'Horaires complets et à jour' },
+            { t: 'good', x: 'Téléphone et site web renseignés' }
+          ]},
+        { title: 'Présence locale',
+          tip: 'Une description courte limite votre référencement local. Les attributs (sans contact, click-and-collect, etc.) déclenchent des filtres sur Maps. Le rapport vous donne une trame de description optimisée pour votre métier.',
+          flags: [
+            { t: 'warn', x: 'Description courte (87 caractères sur 750 possibles)' },
+            { t: 'bad',  x: 'Aucun attribut détaillé (terrasse, sans contact, etc.)' }
+          ]},
+        { title: 'Engagement',
+          tip: 'Les posts Google Business gardent votre fiche vivante aux yeux de l\'algorithme. Le rapport explique quoi poster et à quelle fréquence quand on n\'a pas le temps de s\'en occuper tous les jours.',
+          flags: [
+            { t: 'bad',  x: 'Aucun post Google Business depuis 8 mois' },
+            { t: 'warn', x: 'Questions / réponses non configurées' }
+          ]}
       ]
     },
     '0148': {
@@ -862,27 +906,37 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
       cat: 'Réparation automobile, Pau',
       score: 34, tone: 'red',
       sections: [
-        { title: 'Avis et réputation', flags: [
-          { t: 'bad', x: 'Note 3.2 / 5 sur 47 avis clients' },
-          { t: 'bad', x: '22 avis négatifs sans réponse' },
-          { t: 'bad', x: 'Dernière réponse à un avis il y a 14 mois' }
-        ]},
-        { title: 'Photos et visuels', flags: [
-          { t: 'bad',  x: '2 photos seulement sur la fiche' },
-          { t: 'warn', x: 'Photos en basse résolution' }
-        ]},
-        { title: 'Informations de base', flags: [
-          { t: 'bad',  x: 'Description vide' },
-          { t: 'warn', x: 'Une seule catégorie déclarée' }
-        ]},
-        { title: 'Présence locale', flags: [
-          { t: 'bad', x: 'Pas de zone d\'intervention précisée' },
-          { t: 'bad', x: 'Aucun service détaillé renseigné' }
-        ]},
-        { title: 'Engagement', flags: [
-          { t: 'bad', x: 'Aucun post Google Business' },
-          { t: 'bad', x: 'Questions clients sans réponse' }
-        ]}
+        { title: 'Avis et réputation',
+          tip: 'Une note de 3.2 / 5 fait fuir les clients avant même qu\'ils n\'aient appelé. Ce n\'est pas irréversible. Le rapport montre comment traiter les avis anciens sans réponse pour redresser la moyenne en quelques mois, sans paraître désespéré.',
+          flags: [
+            { t: 'bad', x: 'Note 3.2 / 5 sur 47 avis clients' },
+            { t: 'bad', x: '22 avis négatifs sans réponse' },
+            { t: 'bad', x: 'Dernière réponse à un avis il y a 14 mois' }
+          ]},
+        { title: 'Photos et visuels',
+          tip: '2 photos seulement, c\'est l\'équivalent d\'une vitrine vide. Les clients qui cherchent un garage veulent voir vos équipements, l\'atelier, l\'équipe. Le rapport liste les photos prioritaires à ajouter pour rassurer.',
+          flags: [
+            { t: 'bad',  x: '2 photos seulement sur la fiche' },
+            { t: 'warn', x: 'Photos en basse résolution' }
+          ]},
+        { title: 'Informations de base',
+          tip: 'Une description vide et une seule catégorie limitent énormément vos apparitions dans les recherches. Le rapport vous montre les catégories secondaires à activer et comment rédiger une description qui convertit.',
+          flags: [
+            { t: 'bad',  x: 'Description vide' },
+            { t: 'warn', x: 'Une seule catégorie déclarée' }
+          ]},
+        { title: 'Présence locale',
+          tip: 'Sans zone d\'intervention ni services détaillés, Google ne sait pas quand vous proposer. Le rapport liste les 10 services à ajouter en priorité pour un garage et explique comment définir votre zone.',
+          flags: [
+            { t: 'bad', x: 'Pas de zone d\'intervention précisée' },
+            { t: 'bad', x: 'Aucun service détaillé renseigné' }
+          ]},
+        { title: 'Engagement',
+          tip: 'Aucun post, aucune réponse aux questions clients : pour Google, votre fiche est inactive. Le rapport explique comment réactiver tout ça en moins de 30 minutes par semaine.',
+          flags: [
+            { t: 'bad', x: 'Aucun post Google Business' },
+            { t: 'bad', x: 'Questions clients sans réponse' }
+          ]}
       ]
     },
     '0149': {
@@ -891,27 +945,37 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
       cat: 'Salon de coiffure, Anglet',
       score: 81, tone: 'green',
       sections: [
-        { title: 'Avis et réputation', flags: [
-          { t: 'good', x: '89 % des avis avec réponse' },
-          { t: 'good', x: 'Note 4.7 / 5 sur 156 avis' },
-          { t: 'good', x: 'Réponses personnalisées et professionnelles' }
-        ]},
-        { title: 'Photos et visuels', flags: [
-          { t: 'good', x: '34 photos récentes ajoutées' },
-          { t: 'good', x: 'Galerie de réalisations à jour' }
-        ]},
-        { title: 'Informations de base', flags: [
-          { t: 'warn', x: 'Horaires fériés à compléter' },
-          { t: 'good', x: 'Tous les services tarifés indiqués' }
-        ]},
-        { title: 'Présence locale', flags: [
-          { t: 'good', x: 'Description complète (650 / 750 caractères)' },
-          { t: 'good', x: 'Attributs détaillés (Wi-Fi, paiement sans contact, etc.)' }
-        ]},
-        { title: 'Engagement', flags: [
-          { t: 'good', x: 'Posts Google Business réguliers' },
-          { t: 'warn', x: 'Quelques questions clients sans réponse' }
-        ]}
+        { title: 'Avis et réputation',
+          tip: 'Vous êtes déjà très bien placée. Le rapport identifie les 2 ou 3 améliorations marginales qui peuvent vous faire passer à 90 / 100, notamment sur la personnalisation des réponses et le suivi des avis 4 étoiles.',
+          flags: [
+            { t: 'good', x: '89 % des avis avec réponse' },
+            { t: 'good', x: 'Note 4.7 / 5 sur 156 avis' },
+            { t: 'good', x: 'Réponses personnalisées et professionnelles' }
+          ]},
+        { title: 'Photos et visuels',
+          tip: 'Votre galerie est exemplaire. Le rapport vous indique seulement quelques angles complémentaires qui boostent les conversions sur mobile : avant / après, équipe, ambiance du salon.',
+          flags: [
+            { t: 'good', x: '34 photos récentes ajoutées' },
+            { t: 'good', x: 'Galerie de réalisations à jour' }
+          ]},
+        { title: 'Informations de base',
+          tip: 'Tout est presque parfait. Le rapport pointe juste les horaires fériés et donne le calendrier des jours à vérifier chaque trimestre pour ne plus jamais y penser.',
+          flags: [
+            { t: 'warn', x: 'Horaires fériés à compléter' },
+            { t: 'good', x: 'Tous les services tarifés indiqués' }
+          ]},
+        { title: 'Présence locale',
+          tip: 'Excellente description, attributs complets. Le rapport vous donne des optimisations fines sur le placement des mots-clés et les attributs sous-utilisés dans votre secteur.',
+          flags: [
+            { t: 'good', x: 'Description complète (650 / 750 caractères)' },
+            { t: 'good', x: 'Attributs détaillés (Wi-Fi, paiement sans contact, etc.)' }
+          ]},
+        { title: 'Engagement',
+          tip: 'Vos posts sont réguliers, c\'est rare. Le rapport vous donne quelques idées pour booster l\'engagement (sondages, nouvelles photos) et un modèle de réponse aux questions pour ne plus en oublier.',
+          flags: [
+            { t: 'good', x: 'Posts Google Business réguliers' },
+            { t: 'warn', x: 'Quelques questions clients sans réponse' }
+          ]}
       ]
     },
     '0150': {
@@ -920,27 +984,37 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
       cat: 'Restaurant italien, Biarritz',
       score: 47, tone: 'amber',
       sections: [
-        { title: 'Avis et réputation', flags: [
-          { t: 'bad',  x: '3 derniers avis négatifs sans réponse' },
-          { t: 'warn', x: 'Note 3.9 / 5 sur 89 avis' },
-          { t: 'warn', x: 'Réponses standardisées (copier-coller)' }
-        ]},
-        { title: 'Photos et visuels', flags: [
-          { t: 'warn', x: 'Menu non renseigné sur la fiche' },
-{ t: 'warn', x: 'Photos majoritairement anciennes (plus de 2 ans)' }
-        ]},
-        { title: 'Informations de base', flags: [
-          { t: 'good', x: 'Coordonnées et horaires complets' },
-          { t: 'good', x: 'Service livraison indiqué' }
-        ]},
-        { title: 'Présence locale', flags: [
-          { t: 'warn', x: 'Description peu engageante' },
-          { t: 'bad',  x: 'Pas d\'attributs (terrasse, animaux, etc.)' }
-        ]},
-        { title: 'Engagement', flags: [
-          { t: 'bad',  x: 'Aucun post depuis 5 mois' },
-          { t: 'warn', x: 'Carte des prix absente' }
-        ]}
+        { title: 'Avis et réputation',
+          tip: 'Trois avis négatifs récents sans réponse pèsent lourd dans la décision d\'un client. Et les réponses copier-coller sont presque pires que pas de réponse. Le rapport vous donne le framework pour répondre vite et personnellement, même en plein coup de feu.',
+          flags: [
+            { t: 'bad',  x: '3 derniers avis négatifs sans réponse' },
+            { t: 'warn', x: 'Note 3.9 / 5 sur 89 avis' },
+            { t: 'warn', x: 'Réponses standardisées (copier-coller)' }
+          ]},
+        { title: 'Photos et visuels',
+          tip: 'Sans menu et avec des photos vieilles de 2 ans, vous perdez les clients indécis avant même qu\'ils n\'envisagent de venir. Le rapport vous explique comment intégrer votre carte directement sur la fiche et quelles photos refaire en priorité.',
+          flags: [
+            { t: 'warn', x: 'Menu non renseigné sur la fiche' },
+            { t: 'warn', x: 'Photos majoritairement anciennes (plus de 2 ans)' }
+          ]},
+        { title: 'Informations de base',
+          tip: 'Vos infos de base sont bonnes. Le rapport vérifie quand même les paramètres spécifiques restauration (réservation, options diététiques, places assises) qui peuvent vous faire gagner en visibilité.',
+          flags: [
+            { t: 'good', x: 'Coordonnées et horaires complets' },
+            { t: 'good', x: 'Service livraison indiqué' }
+          ]},
+        { title: 'Présence locale',
+          tip: 'Une description peu engageante et aucun attribut, c\'est se priver de filtres importants : terrasse, animaux acceptés, fait maison... Le rapport liste les attributs qui rapportent le plus aux pizzerias.',
+          flags: [
+            { t: 'warn', x: 'Description peu engageante' },
+            { t: 'bad',  x: 'Pas d\'attributs (terrasse, animaux, etc.)' }
+          ]},
+        { title: 'Engagement',
+          tip: '5 mois sans poste, c\'est dommage : un bon post peut générer 50 vues. Le rapport vous donne 10 idées de posts simples (photos du four, plat du jour, événements) et la fréquence idéale.',
+          flags: [
+            { t: 'bad',  x: 'Aucun post depuis 5 mois' },
+            { t: 'warn', x: 'Carte des prix absente' }
+          ]}
       ]
     }
   };
@@ -953,6 +1027,10 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
   const mGauge = document.getElementById('mGauge');
   const mBody = document.getElementById('mBody');
 
+  function escapeHtml(s){
+    return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
   function openAudit(id){
     const a = audits[id];
     if(!a) return;
@@ -963,13 +1041,29 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
     mGauge.className = 'gauge ' + a.tone;
     const offset = 283 * (1 - a.score / 100);
     mGauge.querySelector('.bar').setAttribute('stroke-dashoffset', offset.toFixed(1));
-    mBody.innerHTML = a.sections.map(s =>
-      '<div class="m-section"><h4>' + s.title + '</h4>' +
-      s.flags.map(f =>
-        '<div class="flag ' + f.t + '"><span class="dt"></span>' + f.x + '</div>'
-      ).join('') +
+    mBody.innerHTML = a.sections.map((s, i) =>
+      '<div class="m-section">' +
+        '<button class="m-head" aria-expanded="false" aria-controls="tip-' + i + '">' +
+          '<span class="m-title">' + escapeHtml(s.title) + '</span>' +
+          '<span class="m-toggle"><span>Comment agir</span><span class="m-ic">+</span></span>' +
+        '</button>' +
+        '<div class="m-tip" id="tip-' + i + '" hidden>' + escapeHtml(s.tip) + '</div>' +
+        s.flags.map(f =>
+          '<div class="flag ' + f.t + '"><span class="dt"></span>' + escapeHtml(f.x) + '</div>'
+        ).join('') +
       '</div>'
     ).join('');
+
+    mBody.querySelectorAll('.m-head').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tip = btn.nextElementSibling;
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        if(isOpen) tip.setAttribute('hidden', '');
+        else tip.removeAttribute('hidden');
+      });
+    });
+
     modal.classList.add('open');
     document.body.classList.add('lock');
   }
@@ -997,7 +1091,6 @@ color:var(--gray);max-width:540px;margin:0 auto 36px;font-size:1.05rem;
     if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
   });
 
-  // Pagination dots
   const slider = document.getElementById('slider');
   const cards = slider.querySelectorAll('.report-card');
   const pager = document.getElementById('pager');
