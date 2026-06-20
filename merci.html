@@ -112,14 +112,28 @@
       color: #9aa0aa;
     }
   </style>
-<!-- Event snippet for Achat (1) conversion page --> 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18219138867"></script>
 <script>
-  gtag('event', 'conversion', {
-     'send_to': 'AW-18219138867/fPXCCI66l8IcELP-x-9D',
-     'transaction_id': ''
-      // 'new_customer': true /* calculate dynamically, populate with true/false */,
-   });
- </script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18219138867');
+</script>
+<!-- Event snippet for Achat (1) conversion page -->
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var sessionId = params.get('session_id') || '';
+
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18219138867/fPXCCI66l8IcELP-x-9D',
+      'transaction_id': sessionId,
+      'value': 19.0,
+      'currency': 'EUR'
+    });
+  })();
+</script>
 </head>
 <body>
 
